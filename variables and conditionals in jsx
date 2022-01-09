@@ -1,0 +1,53 @@
+/*components can be classes or objects.
+
+main app component
+need div to have both <h1> and <p> or <>
+
+{showcomments ? 'yes' : 'no' } if showcomments is true display yes else display no
+{showcomments && 'yes} if showcomments true show yes else do nothing
+*/
+function App(){
+    const title = 'Blog Post'
+    const body = 'This is a blog post'
+    //Array of comments
+    const comments = [
+        {id: 1, text: 'absc 1'},
+        {id: 2, text: 'Comment 2'},
+        {id: 3, text: 'Comment 3'},
+        {id: 4, text: 'Comment 4'}
+
+    ]
+
+    const loading = false
+    const showcomments = false
+    //Could help if fetching data froma backend
+    if(loading){
+        return <h1>Loading...</h1>
+    }
+
+    const commentblock =(
+    <div>
+        <h3>Comments ({comments.length})</h3>
+        <ul>
+            {comments.map((comment, index) => (
+                <li key={index}>{comment.text}</li>
+            ))}
+        </ul>
+    </div>)
+
+    return (
+        <div className ='container'>
+            <h1>
+                {title.toUpperCase}
+            </h1>
+            <p>{body}</p>
+            {showcomments && commentblock}
+
+        </div>
+
+        
+
+    )
+}
+
+export default App
